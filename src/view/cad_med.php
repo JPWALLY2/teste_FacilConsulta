@@ -24,7 +24,7 @@ session_start()
     <h1 class="text-uppercase text-center" style="margin-left: 145px;">Cadastro de Médicos</h1>
     </div>
     <div class="col-2 align-self-center d-flex justify-content-end">
-    <a href="../src/index.php" role="button" class="btn btn-primary" title="Voltar">Voltar</a>
+    <a href="index.php" role="button" class="btn btn-primary" title="Voltar">Voltar</a>
     </div>
 </div>
     <?php
@@ -35,7 +35,7 @@ session_start()
         unset($_SESSION['msg']);
     }
     ?>
-    <form method="POST" action="controller/cadastro.php">
+    <form method="POST" action="../controller/medicoController/cadastro_med.php">
     <div class="container col-6">
 
         <div class="form-group">

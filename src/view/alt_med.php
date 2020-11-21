@@ -27,7 +27,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
     <h1 class="text-uppercase text-center" style="margin-left: 145px;">Alterar Médico</h1>
     </div>
     <div class="col-2 align-self-center d-flex justify-content-end">
-    <a href="../src/index.php" role="button" class="btn btn-primary" title="Voltar">Voltar</a>
+    <a href="../view/index.php" role="button" class="btn btn-primary" title="Voltar">Voltar</a>
     </div>
 </div>
     <?php
@@ -45,7 +45,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
      $resultado_med->execute();
      $med = $resultado_med->fetch(PDO::FETCH_ASSOC); 
     ?>
-    <form method="POST" action="controller/alteracao.php">
+    <form method="POST" action="../controller/medicoController/alteracao_med.php">
     <div class="container col-6">
         <!-- input oculto com o id -->
     <input type="hidden" name="id" value="<?php if(isset($med['id'])){ echo $med['id']; } ?>">

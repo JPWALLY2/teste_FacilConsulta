@@ -21,7 +21,7 @@ include_once HOME_DIR . '\config-banco-dados.php';
     <h1 class="text-uppercase text-center" style="margin-left: 145px;">Lista de Médicos</h1>
     </div>
     <div class="col-2 align-self-center d-flex justify-content-end">
-    <a href="../src/cad_med.php" role="button" class="btn btn-primary" title="Cadastar Médico">Cadastrar</a>
+    <a href="cad_med.php" role="button" class="btn btn-primary" title="Cadastar Médico">Cadastrar</a>
     </div>
     </div>
         <?php
@@ -38,6 +38,14 @@ include_once HOME_DIR . '\config-banco-dados.php';
         //prepara os registros
         $resultado_med = $conn->prepare($result_med);
         $resultado_med->execute();
+
+        //SQL para selecionar os registrosdehorarios
+        // $result_hor = "SELECT * FROM horarios WHERE id_medicos= ORDER BY id ASC";
+
+
+        //prepara os registros
+        // $resultado_med = $conn->prepare($result_med);
+        // $resultado_med->execute();
         ?>
 
          <table class="table table-striped">
@@ -55,12 +63,17 @@ include_once HOME_DIR . '\config-banco-dados.php';
                 echo ' <tr>';
                 echo '<td scope="row">' . $med['nome'] . '</td>';
                 echo '<td>' . $med['email'] . '</td>';
-                echo '<td></td>';
+                echo '<td>';   while ($med = $resultado_med->fetch(PDO::FETCH_ASSOC)) {
+
+                }
+                '</td>';
                 echo '<td>';
-                echo "<a href='controller/excluir_med.php?id=".$med['id'] . "'
-                role='button' class='btn btn-danger' title='Excluir' name='excluir'><i class='fa fa-trash'></i></a>&nbsp;&nbsp";
-                echo "<a href='../src/alt_med.php?id=".$med['id'] . "'
-                 role='button' class='btn btn-warning' title='Editar'><i class='fa fa-edit'></i></a></td>";
+                echo "<a href='cad_hor.php?id=".$med['id'] . "'
+                 role='button' class='btn btn-success' title='Adicionar Horário'><i class='fa fa-plus'></i></a>&nbsp;&nbsp";
+                echo "<a href='alt_med.php?id=".$med['id'] . "'
+                 role='button' class='btn btn-warning' title='Editar'><i class='fa fa-edit'></i></a>&nbsp;&nbsp";
+                echo "<a href='../controller/medicoController/excluir_med.php?id=".$med['id'] . "'
+                role='button' class='btn btn-danger' title='Excluir' name='excluir'><i class='fa fa-trash'></i></a></td>";
                
                 echo '</tr>';
         }

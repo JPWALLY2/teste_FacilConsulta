@@ -35,7 +35,7 @@ if($alterar){
         //variavel global
     $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Todos os campos devem ser preenchidos</p>";
     //redirecionamento
-    header("Location: ../alt_med.php?id=$id");
+    header("Location: ../../view/alt_med.php?id=$id");
     }else{
 
     if(md5($senhaAntiga) == $senhaAnt){
@@ -44,14 +44,14 @@ if($alterar){
             //variavel global
             $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Todos os campos devem ter o mínimo de 6 caracteres</p>";
             //redirecionamento
-            header("Location: ../alt_med.php?id=$id");
+            header("Location: ../../view/alt_med.php?id=$id");
         }else{
             //se executou com sucesso
           if($update_med->execute()){
               //variavel global
               $_SESSION['msg'] = "<p class='alert-success py-2 text-center font-weight-bold'>Médico alterado com sucesso!</p>";
               //redirecionamento
-              header("Location: ../index.php");
+              header("Location: ../../view/index.php");
           } 
         }
        
@@ -62,13 +62,13 @@ if($alterar){
         //variavel global
         $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >A senha informada não é a mesma senha cadastrada</p>";
         //redirecionamento
-        header("Location: ../alt_med.php?id=$id");
+        header("Location: ../../view/alt_med.php?id=$id");
     }
 }
 }else{
      //variavel global
      $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Falha ao alterar o Médico</p>";
     //redirecionamento
-     header("Location: ../alt_med.php?id=$id");
+     header("Location: ../../view/alt_med.php?id=$id");
 
 }
