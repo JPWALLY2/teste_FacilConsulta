@@ -15,10 +15,10 @@ if(!empty($id)){
         //variavel global
         $_SESSION['msg'] = "<p class='alert-success py-2 text-center font-weight-bold'>Médico excluído com sucesso!</p>";
         //redirecionamento
-        header("Location: ../index.php");
+        header("Location: ../../view/index.php");
     } 
 
 }else{	
 	$_SESSION['msg'] = "<p style='color:red;'>Necessário selecionar um usuário</p>";
-	header("Location: ../index.php");
+	header("Location: ../../view/index.php");
 }

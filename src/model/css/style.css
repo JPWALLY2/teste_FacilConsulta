@@ -1,0 +1,11 @@
+/* INDEX */
+h1{
+    margin-left: 145px;
+}
+td, a{
+  color: black;
+}
+
+a:hover{
+    color: blue;
+}

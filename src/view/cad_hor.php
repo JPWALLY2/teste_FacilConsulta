@@ -44,9 +44,9 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
      $resultado_med = $conn->prepare($result_med);
      $resultado_med->execute();
      $med = $resultado_med->fetch(PDO::FETCH_ASSOC); 
-     //dados horarios
 
-      //SQL para selecionar os registros
+     //dados horarios
+    //SQL para selecionar os registros
     $result_hor = "SELECT * FROM horarios WHERE id_medicos=$id ORDER BY id ASC";
      $resultado_hor = $conn->prepare($result_hor);
      $resultado_hor->execute();
@@ -77,7 +77,8 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
          <?php
         while ($hor = $resultado_hor->fetch(PDO::FETCH_ASSOC)) {
                 echo ' <tr>';
-                echo '<td scope="row" class="text-center">' . $hor['data_horario'] . '</td>';
+                $data = new DateTime($hor['data_horario']);
+                echo '<td scope="row" class="text-center">' . $data->format('d-m-yy H:i') . '</td>';
                 echo "<td><a href='../controller/horarioController/excluir_hor.php?id=".$hor['id'] . "' 
                 role='button' class='btn btn-danger' title='Excluir' name='excluir'><i class='fa fa-trash'></i></a></td>";
                 echo '</tr>';
@@ -88,7 +89,3 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 </body>
 </html>
-
-<script>
-    
-</script>

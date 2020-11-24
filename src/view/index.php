@@ -11,6 +11,7 @@ include_once HOME_DIR . '\config-banco-dados.php';
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../model/css/style.css" />
     <title>Lista de Médicos</title>
 
 </head>
@@ -18,7 +19,7 @@ include_once HOME_DIR . '\config-banco-dados.php';
     <div class="container bg-light col-lg-8 rounded mt-5">
     <div class="row">
     <div class="col-10">
-    <h1 class="text-uppercase text-center" style="margin-left: 145px;">Lista de Médicos</h1>
+    <h1 class="text-uppercase text-center">Lista de Médicos</h1>
     </div>
     <div class="col-2 align-self-center d-flex justify-content-end">
     <a href="cad_med.php" role="button" class="btn btn-primary" title="Cadastar Médico">Cadastrar</a>
@@ -34,40 +35,45 @@ include_once HOME_DIR . '\config-banco-dados.php';
         //SQL para selecionar os registros
         $result_med = "SELECT * FROM medicos ORDER BY id ASC";
 
-
         //prepara os registros
         $resultado_med = $conn->prepare($result_med);
         $resultado_med->execute();
+        
 
-        //SQL para selecionar os registrosdehorarios
-        // $result_hor = "SELECT * FROM horarios WHERE id_medicos= ORDER BY id ASC";
-
-
+        $result_hor = "SELECT * FROM horarios WHERE id_medicos";
         //prepara os registros
-        // $resultado_med = $conn->prepare($result_med);
-        // $resultado_med->execute();
+        $resultado_hor = $conn->prepare($result_hor);
+        $resultado_hor->execute();
         ?>
 
+      
          <table class="table table-striped">
          <thead>
          <tr>
-         <th scope="col">Nome</th>
-         <th scope="col">Email</th>
-         <th scope="col">Horários</th>
-         <th scope="col"></th>
+         <th scope="col" class="text-center">Nome</th>
+         <th class="text-center">Email</th>
+         <th class="text-center">Horários</th>
+         <th class="text-center"></th>
          </tr>
          </thead>
          <tbody>
+
          <?php
         while ($med = $resultado_med->fetch(PDO::FETCH_ASSOC)) {
                 echo ' <tr>';
-                echo '<td scope="row">' . $med['nome'] . '</td>';
-                echo '<td>' . $med['email'] . '</td>';
-                echo '<td>';   while ($med = $resultado_med->fetch(PDO::FETCH_ASSOC)) {
-
+                echo '<input type="hidden"  name="id" class="col-1" value="' . $med['id']  .'">';
+                echo '<td scope="row" class="text-center">' . $med['nome'] . '</td>';
+                echo '<td class="text-center">' . $med['email'] . '</td>';
+                echo '<td class="text-center">';
+                while ($hor = $resultado_hor->fetch(PDO::FETCH_ASSOC)) {
+                    $data = new DateTime($hor['data_horario']);
+                    echo '<input type="hidden"  class="col-2" value="' . $hor['id'] . '">';
+                    echo "<a href='../controller/horarioController/agendar_hor.php?id=" . $hor['id'] . "'
+                    'role='button' title='Agendar Horário' name='agendar' style='text-decoration: none;'>". $data->format('d-m-yy H:i'). "</a>";
+                    echo '<br>';
                 }
                 '</td>';
-                echo '<td>';
+                echo '<td class="text-center">';
                 echo "<a href='cad_hor.php?id=".$med['id'] . "'
                  role='button' class='btn btn-success' title='Adicionar Horário'><i class='fa fa-plus'></i></a>&nbsp;&nbsp";
                 echo "<a href='alt_med.php?id=".$med['id'] . "'
@@ -82,4 +88,8 @@ include_once HOME_DIR . '\config-banco-dados.php';
         </table>
     </div>
 </body>
+
+<script>
+
+</script>
 </html>
