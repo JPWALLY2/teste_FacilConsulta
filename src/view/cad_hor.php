@@ -40,9 +40,11 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
     }
     //SQL para selecionar o registro
     $result_med = "SELECT * FROM medicos WHERE id=$id";
-    //dados medicos
+    //Prepara uma instrução para execução e retorna um objeto de instrução
      $resultado_med = $conn->prepare($result_med);
+     // Executa a declaração preparada
      $resultado_med->execute();
+     // Busca a linha de um conjunto de resultados
      $med = $resultado_med->fetch(PDO::FETCH_ASSOC); 
 
      //dados horarios
@@ -75,8 +77,10 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
          </thead>
          <tbody>
          <?php
+         // Busca a linha de um conjunto de resultados
         while ($hor = $resultado_hor->fetch(PDO::FETCH_ASSOC)) {
                 echo ' <tr>';
+                //cria um objeto DateTime
                 $data = new DateTime($hor['data_horario']);
                 echo '<td scope="row" class="text-center">' . $data->format('d-m-yy H:i') . '</td>';
                 echo "<td><a href='../controller/horarioController/excluir_hor.php?id=".$hor['id'] . "' 

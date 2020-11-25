@@ -42,7 +42,9 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
      //Seleciona os registros
      $resultado_med = $conn->prepare($result_med);
+     // Executa a declaração preparada
      $resultado_med->execute();
+     // Busca a linha de um conjunto de resultados
      $med = $resultado_med->fetch(PDO::FETCH_ASSOC); 
     ?>
     <form method="POST" action="../controller/medicoController/alteracao_med.php">

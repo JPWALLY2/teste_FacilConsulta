@@ -15,17 +15,7 @@ include_once HOME_DIR . '\config-banco-dados.php';
     <title>Lista de Médicos</title>
 
 </head>
-<body>
-    <div class="container bg-light col-lg-8 rounded mt-5">
-    <div class="row">
-    <div class="col-10">
-    <h1 class="text-uppercase text-center">Lista de Médicos</h1>
-    </div>
-    <div class="col-2 align-self-center d-flex justify-content-end">
-    <a href="cad_med.php" role="button" class="btn btn-primary" title="Cadastar Médico">Cadastrar</a>
-    </div>
-    </div>
-        <?php
+<?php
         //se a variavel global existir 
      if(isset($_SESSION['msg'])){
         //exibe a variavel local e destroi
@@ -35,61 +25,50 @@ include_once HOME_DIR . '\config-banco-dados.php';
         //SQL para selecionar os registros
         $result_med = "SELECT * FROM medicos ORDER BY id ASC";
 
-        //prepara os registros
+        //Prepara uma instrução para execução e retorna um objeto de instrução
         $resultado_med = $conn->prepare($result_med);
+        // Executa a declaração preparada
         $resultado_med->execute();
-        
 
         $result_hor = "SELECT * FROM horarios WHERE id_medicos";
-        //prepara os registros
+        //Prepara uma instrução para execução e retorna um objeto de instrução
         $resultado_hor = $conn->prepare($result_hor);
+        // Executa a declaração preparada
         $resultado_hor->execute();
+
         ?>
 
-      
-         <table class="table table-striped">
-         <thead>
-         <tr>
-         <th scope="col" class="text-center">Nome</th>
-         <th class="text-center">Email</th>
-         <th class="text-center">Horários</th>
-         <th class="text-center"></th>
-         </tr>
-         </thead>
-         <tbody>
-
-         <?php
-        while ($med = $resultado_med->fetch(PDO::FETCH_ASSOC)) {
-                echo ' <tr>';
-                echo '<input type="hidden"  name="id" class="col-1" value="' . $med['id']  .'">';
-                echo '<td scope="row" class="text-center">' . $med['nome'] . '</td>';
-                echo '<td class="text-center">' . $med['email'] . '</td>';
-                echo '<td class="text-center">';
+<body  class="bg-light">
+    <nav class="navbar d-flex justify-content-end">
+    <a href="cad_med.php" role="button" class="anav rounded m-1" title="Cadastar Médico">Cadastrar médico</a>
+    </nav>
+   
+    <?php
+    while ($med = $resultado_med->fetch(PDO::FETCH_ASSOC)) {
+            echo '<div class=" div2 container col-lg-7 col-10 rounded mt-5">';
+                echo '<div class="row container d-flex mb-4" style="margin-left:0px">';
+                    echo '<h1 class="pt-3 dadoMed mr-auto">'. $med['nome'] .'</h1>';
+                            echo "<a href='alt_med.php?id=".$med['id'] . "'
+                            role='button' class=' py-0 mt-3  btn btnE' title='Editar cadastro'>Editar cadastro</a>&nbsp&nbsp";
+                            echo "<a href='cad_hor.php?id=".$med['id'] . "'
+                            role='button' class=' py-0 mt-3  btn btnH' title='Configurar horários'>Configurar horários</a>";
+                echo '</div>';
+            echo '<div class="d-flex flex-wrap mx-2">';
+                // Busca a linha de um conjunto de resultados
                 while ($hor = $resultado_hor->fetch(PDO::FETCH_ASSOC)) {
+                    //cria um objeto DateTime
                     $data = new DateTime($hor['data_horario']);
-                    echo '<input type="hidden"  class="col-2" value="' . $hor['id'] . '">';
-                    echo "<a href='../controller/horarioController/agendar_hor.php?id=" . $hor['id'] . "'
-                    'role='button' title='Agendar Horário' name='agendar' style='text-decoration: none;'>". $data->format('d-m-yy H:i'). "</a>";
-                    echo '<br>';
+                        echo '<input type="hidden"  class="col-2" value="' . $hor['id'] . '">';
+                        echo "<a class='data btn mr-2 mb-2' href='../controller/horarioController/agendar_hor.php?id=" . $hor['id'] . "
+                        'role='button' title='Agendar Horário'>". $data->format('d/m/yy H:i'). "</a>";
+
                 }
-                '</td>';
-                echo '<td class="text-center">';
-                echo "<a href='cad_hor.php?id=".$med['id'] . "'
-                 role='button' class='btn btn-success' title='Adicionar Horário'><i class='fa fa-plus'></i></a>&nbsp;&nbsp";
-                echo "<a href='alt_med.php?id=".$med['id'] . "'
-                 role='button' class='btn btn-warning' title='Editar'><i class='fa fa-edit'></i></a>&nbsp;&nbsp";
-                echo "<a href='../controller/medicoController/excluir_med.php?id=".$med['id'] . "'
-                role='button' class='btn btn-danger' title='Excluir' name='excluir'><i class='fa fa-trash'></i></a></td>";
-               
-                echo '</tr>';
-        }
-        ?>
-        </tbody>
-        </table>
+                echo '</div>';
+            echo '</div>';
+    }
+    ?>
+    </body>
     </div>
-</body>
-
-<script>
-
-</script>
+    
+    
 </html>

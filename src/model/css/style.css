@@ -1,5 +1,89 @@
-/* INDEX */
-h1{
+*{
+  font-family: Signika;
+}
+/* CADASTRO DE MÈDICOS */
+nav{
+  background-color: #0094CF;
+}
+.anav{
+  
+  color: #0094CF;
+  background-color: #ffffff;
+  font-size: 15px;
+  padding: 8px;
+}
+.anav:hover{
+  text-decoration: none;
+}
+
+.div1{
+  background-color: #ffffff;
+  width: 28%;
+}
+
+.h1div1{
+  color: #004768;
+  font-size: 22px;
+  padding: 0;
+  font-weight: bold;
+}
+
+label{
+  color: #004768;
+  margin-bottom: 0px;
+}
+
+.divin{
+  margin-left: 0;
+  margin-right: 0;
+}
+.divin input{
+  height: 30px;
+}
+
+.b{
+  font-size: 15px;
+}
+
+a .voltar{
+  color: #0094CF;
+}
+
+/* LISTAGEM DE MÈDICOS */
+
+
+.dadoMed{
+  color: #004768;
+  font-size: 20px;
+  font-weight: bold;;
+}
+
+.div2{
+  background-color: #ffffff;
+}
+
+a.data{
+  background-color: #0094CF;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+}
+a.data:hover{
+  color: black;
+}
+
+a.btnE, a.btnH{
+   border: solid 1px #0094CF;
+   color: #0094CF;
+   height: 27px;
+}
+a.btnE:hover, a.btnH:hover{
+  color: #ffffff;
+  background-color: #0094CF;
+}
+
+
+/* h1{
     margin-left: 145px;
 }
 td, a{
@@ -8,4 +92,33 @@ td, a{
 
 a:hover{
     color: blue;
+} */
+
+@media screen and (max-width: 576px) {
+  .div1{
+    width: 70%;
+    
+  }
+  .h1nav{
+    margin-left: 300px;
+  }
+
+  a.data{
+    font-size: 11px;
+  }
+ 
+
+  /* h1{
+    font-size: 35px;
+    margin-left: 0;
+
+  }
+  td{
+    font-size: 13px;
+  }
+
+  td a:not(.data){
+      padding: 10px;
+  } */
+ 
 }

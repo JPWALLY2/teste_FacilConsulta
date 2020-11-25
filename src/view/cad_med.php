@@ -10,23 +10,21 @@ session_start()
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../model/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Signika" />
     <title>Cadastro de Médicos </title>
-    <script
-	src="https://code.jquery.com/jquery-3.3.1.js"
-	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-    crossorigin="anonymous">
-    </script>
+
 </head>
-<body>
-<div class="container bg-light col-lg-8 rounded mt-5">
-<div class="row">
-    <div class="col-10">
-    <h1 class="text-uppercase text-center" style="margin-left: 145px;">Cadastro de Médicos</h1>
-    </div>
-    <div class="col-2 align-self-center d-flex justify-content-end">
-    <a href="index.php" role="button" class="btn btn-primary" title="Voltar">Voltar</a>
-    </div>
-</div>
+<body class="bg-light">
+
+<nav class="navbar d-flex justify-content-end">
+<a href="cad_med.php" role="button" class="anav rounded m-1" title="Cadastar Médico">Cadastrar médico</a>
+</nav>
+
+<div class=" div1 container col-lg-4 rounded mt-5">
+
+<a href="cad_med.php" role="button" class="h1nav rounded m-1" title="Cadastar Médico">Cadastrar médico</a>
+
     <?php
     //se a variavel global existir 
      if(isset($_SESSION['msg'])){
@@ -36,27 +34,28 @@ session_start()
     }
     ?>
     <form method="POST" action="../controller/medicoController/cadastro_med.php">
-    <div class="container col-6">
+    <div class="container col-12 divin">
 
         <div class="form-group">
         <label>Nome</label>
-        <input  class="form-control" placeholder="nome" name="nome" minlength="6" type="text" required>
-        <!-- <input  class="form-control" placeholder="nome" name="nome" minlength="6" pattern="[A-Z\s][a-z\s]+$"
-        oninvalid="setCustomValidity('Somente Letras!')" type="text" required> -->
+        <input  class="form-control" placeholder="Insira o nome do profissional" name="nome" minlength="6" type="text" required>
         </div>
         <div class="form-group">
         <label>Email</label>
-        <input  class="form-control" placeholder="email" name="email" minlength="6" type="email" required>
+        <input  class="form-control" placeholder="exemplo@dominio.com.br" name="email" minlength="6" type="email" required>
         </div>
         <div class="form-group">
          <label>Senha</label>
-        <input  class="form-control" placeholder="senha" name="senha" minlength="6" type="password" required>
+        <input  class="form-control" placeholder="Escolha uma senha forte e segura" name="senha" minlength="6" type="password" required>
         </div>
     </div>
-        <div class="d-flex justify-content-center">
-        <input class="btn btn-success py-1 px-3 mb-3 text-uppercase" style="font-size: 15px;" type="submit" name="cadastrar" value="Cadastrar">
-        </div>
-    </form>
+        <div class="d-flex justify-content-center mt-5">
+        <input class="b btn btn-primary py-2 px-4" type="submit" name="cadastrar" value="Realizar Cadastro">
+    </div>
+    <div class="text-center mt-3 pb-3">
+    <a href="index.php" class="voltar" role="button" title="Voltar"><u> Voltar para página Inicial</u></a>
+    </div>  
+</form>
     </div>
 
 </body>
