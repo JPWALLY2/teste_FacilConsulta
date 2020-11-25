@@ -1,6 +1,9 @@
 *{
   font-family: Signika;
 }
+body{
+  background-color: #737373;
+}
 /* CADASTRO DE MÈDICOS */
 nav{
   background-color: #0094CF;
@@ -39,6 +42,9 @@ label{
 }
 .divin input{
   height: 30px;
+}
+.divin input.i{
+  color: #004768;
 }
 
 .b{

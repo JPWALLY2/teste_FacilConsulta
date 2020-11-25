@@ -38,7 +38,7 @@ include_once HOME_DIR . '\config-banco-dados.php';
 
         ?>
 
-<body  class="bg-light">
+<body">
     <nav class="navbar d-flex justify-content-end">
     <a href="cad_med.php" role="button" class="anav rounded m-1" title="Cadastar Médico">Cadastrar médico</a>
     </nav>
@@ -52,6 +52,9 @@ include_once HOME_DIR . '\config-banco-dados.php';
                             role='button' class=' py-0 mt-3  btn btnE' title='Editar cadastro'>Editar cadastro</a>&nbsp&nbsp";
                             echo "<a href='cad_hor.php?id=".$med['id'] . "'
                             role='button' class=' py-0 mt-3  btn btnH' title='Configurar horários'>Configurar horários</a>";
+                            // BOTÃO DE EXCLUIR MEDICO DESNECESSÁRIO
+                            // echo "<a href='../controller/medicoController/excluir_med.php?id=".$med['id'] . "'
+                            // role='button' class='btn btn-danger' title='Excluir' name='excluir'><i class='fa fa-trash'></i></a></td>";
                 echo '</div>';
             echo '<div class="d-flex flex-wrap mx-2">';
                 // Busca a linha de um conjunto de resultados

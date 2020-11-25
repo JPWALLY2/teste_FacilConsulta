@@ -15,15 +15,14 @@ session_start()
     <title>Cadastro de Médicos </title>
 
 </head>
-<body class="bg-light">
+<body">
 
 <nav class="navbar d-flex justify-content-end">
 <a href="cad_med.php" role="button" class="anav rounded m-1" title="Cadastar Médico">Cadastrar médico</a>
 </nav>
 
 <div class=" div1 container col-lg-4 rounded mt-5">
-
-<a href="cad_med.php" role="button" class="h1nav rounded m-1" title="Cadastar Médico">Cadastrar médico</a>
+    <h1 class="h1div1 text-center pt-3">Cadastro de médicos</h1>
 
     <?php
     //se a variavel global existir 
@@ -34,7 +33,7 @@ session_start()
     }
     ?>
     <form method="POST" action="../controller/medicoController/cadastro_med.php">
-    <div class="container col-12 divin">
+    <div class="container divin">
 
         <div class="form-group">
         <label>Nome</label>
