@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 18-Nov-2020 às 20:08
+-- Generation Time: 23-Nov-2020 às 20:50
 -- Versão do servidor: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -29,13 +29,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `horarios` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `id_medicos` int(10) UNSIGNED NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
+  `id_medicos` int(11) UNSIGNED NOT NULL,
   `data_horario` datetime NOT NULL,
   `horario_agendado` tinyint(1) NOT NULL,
   `data_criacao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `data_alteracao` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -44,13 +44,13 @@ CREATE TABLE `horarios` (
 --
 
 CREATE TABLE `medicos` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `senha` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `data_criacao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `data_alteracao` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `id` int(11) UNSIGNED NOT NULL,
+  `nome` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `senha` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `data_criacao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `data_alteracao` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Indexes for dumped tables
@@ -60,7 +60,8 @@ CREATE TABLE `medicos` (
 -- Indexes for table `horarios`
 --
 ALTER TABLE `horarios`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_medicos` (`id_medicos`);
 
 --
 -- Indexes for table `medicos`
@@ -76,13 +77,23 @@ ALTER TABLE `medicos`
 -- AUTO_INCREMENT for table `horarios`
 --
 ALTER TABLE `horarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `medicos`
 --
 ALTER TABLE `medicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `horarios`
+--
+ALTER TABLE `horarios`
+  ADD CONSTRAINT `horarios_ibfk_1` FOREIGN KEY (`id_medicos`) REFERENCES `medicos` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
