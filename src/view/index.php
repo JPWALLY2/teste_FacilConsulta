@@ -17,30 +17,32 @@ include_once HOME_DIR . '\config-banco-dados.php';
 </head>
 <?php
         //se a variavel global existir 
-     if(isset($_SESSION['msg'])){
-        //exibe a variavel local e destroi
-       echo $_SESSION['msg'];
-       unset($_SESSION['msg']);
-        } 
+    //  if(isset($_SESSION['msg'])){
+    //     //exibe a variavel local e destroi
+    //    echo $_SESSION['msg'];
+    //    unset($_SESSION['msg']);
+    //     } 
         //SQL para selecionar os registros
         $result_med = "SELECT * FROM medicos ORDER BY id ASC";
-
+        // $result_med = "SELECT * FROM medicos ORDER BY id ASC";
         //Prepara uma instrução para execução e retorna um objeto de instrução
         $resultado_med = $conn->prepare($result_med);
         // Executa a declaração preparada
         $resultado_med->execute();
 
-        $result_hor = "SELECT * FROM horarios WHERE id_medicos";
-        //Prepara uma instrução para execução e retorna um objeto de instrução
-        $resultado_hor = $conn->prepare($result_hor);
-        // Executa a declaração preparada
-        $resultado_hor->execute();
+        // $idMedico = "SELECT id_medicos FROM horarios WHERE data_horario > CURRENT_DATE  ORDER BY data_horario";
+        // $resu = $conn->prepare($idMedico);
+        // // Executa a declaração preparada
+        // $resu->execute();
+        // $me = $resu->fetch(PDO::FETCH_ASSOC);
+        // echo $id = $me['id_medicos'];
+
 
         ?>
 
-<body">
+<body>
     <nav class="navbar d-flex justify-content-end">
-    <a href="cad_med.php" role="button" class="anav rounded m-1" title="Cadastar Médico">Cadastrar médico</a>
+    <a href="cad_med.php" role="button" class="anav rounded ml-auto " title="Cadastar Médico">Cadastrar médico</a>
     </nav>
    
     <?php
@@ -52,18 +54,29 @@ include_once HOME_DIR . '\config-banco-dados.php';
                             role='button' class=' py-0 mt-3  btn btnE' title='Editar cadastro'>Editar cadastro</a>&nbsp&nbsp";
                             echo "<a href='cad_hor.php?id=".$med['id'] . "'
                             role='button' class=' py-0 mt-3  btn btnH' title='Configurar horários'>Configurar horários</a>";
+                            //seleciona horarios com o id do médico
+                            $r = "SELECT * FROM horarios WHERE id_medicos=$med[id] ORDER BY data_horario > CURRENT_DATE";
+                            $res = $conn->prepare($r);
+                            $res->execute();
                             // BOTÃO DE EXCLUIR MEDICO DESNECESSÁRIO
                             // echo "<a href='../controller/medicoController/excluir_med.php?id=".$med['id'] . "'
                             // role='button' class='btn btn-danger' title='Excluir' name='excluir'><i class='fa fa-trash'></i></a></td>";
                 echo '</div>';
-            echo '<div class="d-flex flex-wrap mx-2">';
+            echo '<div class="d-flex flex-wrap mx-0">';
                 // Busca a linha de um conjunto de resultados
-                while ($hor = $resultado_hor->fetch(PDO::FETCH_ASSOC)) {
+                while ($hor = $res->fetch(PDO::FETCH_ASSOC)) {
                     //cria um objeto DateTime
                     $data = new DateTime($hor['data_horario']);
-                        echo '<input type="hidden"  class="col-2" value="' . $hor['id'] . '">';
-                        echo "<a class='data btn mr-2 mb-2' href='../controller/horarioController/agendar_hor.php?id=" . $hor['id'] . "
-                        'role='button' title='Agendar Horário'>". $data->format('d/m/yy H:i'). "</a>";
+                    echo '<input type="hidden"  class="col-2" value="' . $hor['id'] . '">';
+                    if($hor['horario_agendado'] == 0){
+                        echo "<a class='data btn mr-2 mb-2 px-4' href='../controller/horarioController/agendar_hor.php?id=" . $hor['id'] . "
+                        'role='button' title='Agendar Horário'>". $data->format('d/m/yy á H:i'). "</a>";
+                        
+                    }else{
+                        echo "<a class='datap btn mr-2 mb-2 px-4' href='../controller/horarioController/agendar_hor.php?id=" . $hor['id'] . "
+                        'role='button' title='Deixar o horário livre'>". $data->format('d/m/yy á H:i'). "</a>";
+
+                    }
 
                 }
                 echo '</div>';

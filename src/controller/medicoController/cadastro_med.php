@@ -43,7 +43,7 @@ if($cadastrar){
             
                 if($conNome < 6 || $conEmail < 6 || $conSenha < 6){
                      //variavel global
-                     $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Todos os campos devem ter o mínimo de 6 caracteres</p>";
+                    //  $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Todos os campos devem ter o mínimo de 6 caracteres</p>";
                      //redirecionamento
                      header("Location: ../../view/cad_med.php");
                 }else{
@@ -51,21 +51,21 @@ if($cadastrar){
                         //se executou com sucesso
                         if($insert_med->execute()){
                             //variavel global
-                            $_SESSION['msg'] = "<p class='alert-success py-2 text-center font-weight-bold'>Médico cadastrado com sucesso!</p>";
+                            // $_SESSION['msg'] = "<p class='alert-success py-2 text-center font-weight-bold'>Médico cadastrado com sucesso!</p>";
                             //redirecionamento
                             header("Location: ../../view/index.php");
                     
                     
                         }else{
                             //variavel global
-                            $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Falha ao Cadastrar o Médico</p>";
+                            // $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Falha ao Cadastrar o Médico</p>";
                             //redirecionamento
                             header("Location: ../../view/cad_med.php");
                     }
                 }
         }else{
         //variavel global
-        $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >O email informado não é um email verdadeiro</p>";
+        // $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >O email informado não é um email verdadeiro</p>";
         //redirecionamento
         header("Location: ../../view/cad_med.php");
         }
@@ -73,7 +73,7 @@ if($cadastrar){
     
 }else{
     //variavel global
-    $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Falha ao Cadastrar o Médico</p>";
+    // $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Falha ao Cadastrar o Médico</p>";
     //redirecionamento
     header("Location: ../../view/cad_med.php");
 }   

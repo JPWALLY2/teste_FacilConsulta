@@ -27,14 +27,14 @@ if($cadastrar){
             //se executou com sucesso
             if($insert_hor->execute()){
                 //variavel global
-                $_SESSION['msg'] = "<p class='alert-success py-2 text-center font-weight-bold'>Horário do Médico cadastrado com sucesso!</p>";
+                // $_SESSION['msg'] = "<p class='alert-success py-2 text-center font-weight-bold'>Horário do Médico cadastrado com sucesso!</p>";
                 //redirecionamento
                 header("Location: ../../view/cad_hor.php?id=$id_medicos");
                 
                 
             }else{
                 //variavel global
-                $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Falha ao Cadastrar o Horário do Médico</p>";
+                // $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Falha ao Cadastrar o Horário do Médico</p>";
                 // //redirecionamento
                 header("Location: ../../view/cad_hor.php");
             }

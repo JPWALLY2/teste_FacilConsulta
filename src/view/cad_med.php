@@ -18,7 +18,7 @@ session_start()
 <body">
 
 <nav class="navbar d-flex justify-content-end">
-<a href="cad_med.php" role="button" class="anav rounded m-1" title="Cadastar Médico">Cadastrar médico</a>
+<a href="cad_med.php" role="button" class="anav rounded ml-auto" title="Cadastar Médico">Cadastrar médico</a>
 </nav>
 
 <div class=" div1 container col-lg-4 rounded mt-5">
@@ -26,11 +26,11 @@ session_start()
 
     <?php
     //se a variavel global existir 
-     if(isset($_SESSION['msg'])){
-         //exibe a variavel local e destroi
-        echo $_SESSION['msg'];
-        unset($_SESSION['msg']);
-    }
+    //  if(isset($_SESSION['msg'])){
+    //      //exibe a variavel local e destroi
+    //     echo $_SESSION['msg'];
+    //     unset($_SESSION['msg']);
+    // }
     ?>
     <form method="POST" action="../controller/medicoController/cadastro_med.php">
     <div class="container divin">

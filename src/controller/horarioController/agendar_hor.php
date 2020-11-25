@@ -20,11 +20,11 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
     if($horario == 0 ){
       //variavel global
-      $_SESSION['msg'] = "<p class='alert-success py-2 text-center font-weight-bold'>Horário agendado com sucesso!</p>";
+      // $_SESSION['msg'] = "<p class='alert-success py-2 text-center font-weight-bold'>Horário agendado com sucesso!</p>";
       $horario_agendado = 1;
     }else{
       //variavel global
-      $_SESSION['msg'] = "<p class='alert-success py-2 text-center font-weight-bold'>Horário liberado para o agendamento</p>";
+      // $_SESSION['msg'] = "<p class='alert-success py-2 text-center font-weight-bold'>Horário liberado para o agendamento</p>";
       $horario_agendado = 0;
     }
 

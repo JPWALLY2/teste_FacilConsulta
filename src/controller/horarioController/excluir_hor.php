@@ -38,17 +38,17 @@ if(!empty($id)){
     
         if($exclusao->execute()){
             //variavel global
-            $_SESSION['msg'] = "<p class='alert-success py-2 text-center font-weight-bold'>Horario do Médico excluído com sucesso!</p>";
+            // $_SESSION['msg'] = "<p class='alert-success py-2 text-center font-weight-bold'>Horario do Médico excluído com sucesso!</p>";
             //redirecionamento
             header("Location: ../../view/cad_hor.php?id=$idM");
         } 
     }else{
-        $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold'>Erro ao excluir, o horário está agendado</p>";
+        // $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold'>Erro ao excluir, o horário está agendado</p>";
         header("Location: ../../view/cad_hor.php?id=$idM");
     }
     
 
 }else{	
-	$_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold'>É necessário selecionar um horário</p>";
+	// $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold'>É necessário selecionar um horário</p>";
 	header("Location: ../../view/cad_hor.php?id=$idM");
 }

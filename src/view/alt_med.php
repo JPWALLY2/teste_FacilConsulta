@@ -37,7 +37,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
     ?>
 <body">
 <nav class="navbar d-flex justify-content-end">
-    <a href="cad_med.php" role="button" class="anav rounded m-1" title="Cadastar Médico">Cadastrar médico</a>
+    <a href="cad_med.php" role="button" class="anav rounded ml-auto" title="Cadastar Médico">Cadastrar médico</a>
     </nav>
 <div class=" div1 container col-lg-4 rounded mt-5">
     <h1 class="h1div1 text-center pt-3">Editar de médico</h1>

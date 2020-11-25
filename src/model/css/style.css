@@ -8,12 +8,22 @@ body{
 nav{
   background-color: #0094CF;
 }
+
+.bg1{
+  margin-left: 170px;
+  height: 320px;
+}
+
+.bg2{
+  margin-right: 170px;
+}
 .anav{
   
   color: #0094CF;
   background-color: #ffffff;
   font-size: 15px;
   padding: 8px;
+  margin-right: 250px;
 }
 .anav:hover{
   text-decoration: none;
@@ -61,7 +71,7 @@ a .voltar{
 .dadoMed{
   color: #004768;
   font-size: 20px;
-  font-weight: bold;;
+  font-weight: bold;
 }
 
 .div2{
@@ -72,10 +82,20 @@ a.data{
   background-color: #0094CF;
   color: #ffffff;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 14px;
 }
 a.data:hover{
-  color: black;
+  color: #737373;
+}
+
+a.datap{
+  background-color: #737373;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+}
+a.datap:hover{
+  color: #0094CF;
 }
 
 a.btnE, a.btnH{
@@ -88,17 +108,20 @@ a.btnE:hover, a.btnH:hover{
   background-color: #0094CF;
 }
 
+/* CADASTRO DE HORÀRIOS */
 
-/* h1{
-    margin-left: 145px;
-}
-td, a{
-  color: black;
+.data, .btnExc{
+  font-size: 13px;
 }
 
-a:hover{
-    color: blue;
-} */
+.btnExc{
+  color: red;
+}
+
+.data{
+  color: #004768;
+  margin-top: 5px;
+}
 
 @media screen and (max-width: 576px) {
   .div1{
@@ -113,18 +136,8 @@ a:hover{
     font-size: 11px;
   }
  
-
-  /* h1{
-    font-size: 35px;
-    margin-left: 0;
-
+  .anav{
+    margin-right: 0;
   }
-  td{
-    font-size: 13px;
-  }
-
-  td a:not(.data){
-      padding: 10px;
-  } */
  
 }

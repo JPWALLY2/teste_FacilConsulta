@@ -33,7 +33,7 @@ if($alterar){
 
     if($nome == null || $senha == null){
         //variavel global
-    $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Todos os campos devem ser preenchidos</p>";
+    // $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Todos os campos devem ser preenchidos</p>";
     //redirecionamento
     header("Location: ../../view/alt_med.php?id=$id");
     }else{
@@ -42,14 +42,14 @@ if($alterar){
 
         if($conNome < 6 || $conSenha < 6){
             //variavel global
-            $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Todos os campos devem ter o mínimo de 6 caracteres</p>";
+            // $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Todos os campos devem ter o mínimo de 6 caracteres</p>";
             //redirecionamento
             header("Location: ../../view/alt_med.php?id=$id");
         }else{
             //se executou com sucesso
           if($update_med->execute()){
               //variavel global
-              $_SESSION['msg'] = "<p class='alert-success py-2 text-center font-weight-bold'>Médico alterado com sucesso!</p>";
+            //   $_SESSION['msg'] = "<p class='alert-success py-2 text-center font-weight-bold'>Médico alterado com sucesso!</p>";
               //redirecionamento
               header("Location: ../../view/index.php");
           } 
@@ -60,14 +60,14 @@ if($alterar){
         echo 'Senha Antiga ' . md5($senhaAntiga);
         echo 'Senha antiga informada ' .$senhaAnt;
         //variavel global
-        $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >A senha informada não é a mesma senha cadastrada</p>";
+        // $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >A senha informada não é a mesma senha cadastrada</p>";
         //redirecionamento
         header("Location: ../../view/alt_med.php?id=$id");
     }
 }
 }else{
      //variavel global
-     $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Falha ao alterar o Médico</p>";
+    //  $_SESSION['msg'] = "<p class='alert-danger py-2 text-center font-weight-bold' >Falha ao alterar o Médico</p>";
     //redirecionamento
      header("Location: ../../view/alt_med.php?id=$id");
 
