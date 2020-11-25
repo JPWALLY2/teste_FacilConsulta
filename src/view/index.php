@@ -24,19 +24,10 @@ include_once HOME_DIR . '\config-banco-dados.php';
     //     } 
         //SQL para selecionar os registros
         $result_med = "SELECT * FROM medicos ORDER BY id ASC";
-        // $result_med = "SELECT * FROM medicos ORDER BY id ASC";
         //Prepara uma instrução para execução e retorna um objeto de instrução
         $resultado_med = $conn->prepare($result_med);
         // Executa a declaração preparada
         $resultado_med->execute();
-
-        // $idMedico = "SELECT id_medicos FROM horarios WHERE data_horario > CURRENT_DATE  ORDER BY data_horario";
-        // $resu = $conn->prepare($idMedico);
-        // // Executa a declaração preparada
-        // $resu->execute();
-        // $me = $resu->fetch(PDO::FETCH_ASSOC);
-        // echo $id = $me['id_medicos'];
-
 
         ?>
 

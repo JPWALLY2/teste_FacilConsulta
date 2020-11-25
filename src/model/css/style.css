@@ -10,12 +10,12 @@ nav{
 }
 
 .bg1{
-  margin-left: 170px;
+  margin-left: 220px;
   height: 320px;
 }
 
 .bg2{
-  margin-right: 170px;
+  margin-right: 110px;
 }
 .anav{
   
@@ -140,4 +140,13 @@ a.btnE:hover, a.btnH:hover{
     margin-right: 0;
   }
  
+  .bg1{
+   margin-left: 70px;
+   margin-right: 50px;
+  }
+  
+  .bg2{
+    margin-left: 70px;
+   margin-right: 50px;
+  }
 }

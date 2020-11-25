@@ -46,8 +46,8 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         <a href="cad_med.php" role="button" class=" ml-auto anav rounded" title="Cadastar Médico">Cadastrar médico</a>
     </nav>
     
-<div class="container d-flex">
-<div class="container bg-light col-4 rounded mt-5 bg1">
+<div class="container  d-flex row justify-content-center">
+<div class="container bg-light col-lg-4 rounded mt-5 bg1 ">
 <h1 class="h1div1 text-center pt-3">Adicionar horários</h1>
     
     <form method="POST" action="../controller/horarioController/cadastro_hor.php">
@@ -71,7 +71,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
     </div>  
 </div>
     </form>
-    <div class="container bg-light col-4 rounded mt-5 bg2">
+    <div class="container bg-light col-lg-4 rounded mt-5 bg2">
     <h1 class="h1div1 text-center pt-3">Horários configurados</h1>
 
     <table class="table table-sm">
